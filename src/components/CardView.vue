@@ -44,6 +44,7 @@
         },
         methods: {
             onSelectTab: function (index) {
+                console.log("onSelectTab ----> index = " + index)
                 this.$emit("onSelectTab", index)
             }
         }

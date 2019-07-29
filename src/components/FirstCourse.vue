@@ -5,6 +5,7 @@
 
             <card-view v-for="(tab,idx) in tabs"
                        :key="tab.index"
+                       :index="tab.index"
                        :title="tab.title"
                        :percent="tab.percent"
                        :total="tab.total"
