@@ -1,8 +1,8 @@
 <template>
-    <div class="content">
+    <div class="content" :class='selected?"selected":""' @click="onSelectTab(index)">
         <div class="head">
             <div class="title">{{title}}</div>
-            <div class="present" :class="up?redColor:greenColor">{{percent}}</div>
+            <div class="present" :class="percent>0?redColor:greenColor">{{percent}}%</div>
         </div>
 
         <div class="total">{{total}}</div>
@@ -13,22 +13,25 @@
     export default {
         name: 'card-view',
         props: {
+            index: {
+                type: Number,
+                default: 0
+            },
+            selected: {
+                type: Boolean,
+                default: false
+            },
             title: {
                 type: String,
                 required: true
             },
             percent: {
-                type: String,
+                type: Number,
                 required: true
             },
             total: {
                 type: String,
                 required: true
-            },
-            up: {
-                type: Boolean,
-                required: false,
-                default: false
             }
 
         },
@@ -37,6 +40,11 @@
             return {
                 redColor: 'red',
                 greenColor: 'green'
+            }
+        },
+        methods: {
+            onSelectTab: function (index) {
+                this.$emit("onSelectTab", index)
             }
         }
     }
@@ -62,6 +70,18 @@
         margin: 0;
         min-width: 10rem;
         line-height: 1;
+        cursor: pointer;
+        background-color: #f7f7f7;
+        border-top: 1px solid #e8e8e8;
+
+
+        &.selected {
+            background-color: #ffffff;
+        }
+
+        &:not(:last-child) {
+            border-right: 1px solid #dfdfdf;
+        }
 
         .head {
             display: flex;

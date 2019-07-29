@@ -2,9 +2,14 @@
     <div>
         <div class="card-head-title">访问分析</div>
         <div class="card-tabs">
-            <card-view title="访问总量" percent="-26%" total="22,621"/>
-            <card-view title="访问课数" percent="-11%" total="947"/>
-            <card-view title="访问总时长" percent="26%" up="true" total="1,781:35:53"/>
+
+            <card-view v-for="(tab,idx) in tabs"
+                       :key="tab.index"
+                       :title="tab.title"
+                       :percent="tab.percent"
+                       :total="tab.total"
+                       :selected="idx==selectedIndex"
+                       @onSelectTab="onSelectTab"/>
         </div>
 
 
@@ -17,7 +22,30 @@
     export default {
         components: {CardView},
         data() {
-            return {}
+            return {
+                tabs: [{
+                    index: 0,
+                    title: "访问总量",
+                    percent: -26,
+                    total: "22,621"
+                }, {
+                    index: 1,
+                    title: "访问课数",
+                    percent: -11,
+                    total: "947"
+                }, {
+                    index: 2,
+                    title: "访问总时长",
+                    percent: 26,
+                    total: "1,781:35:53",
+                }],
+                selectedIndex: 0
+            }
+        },
+        methods: {
+            onSelectTab: function (index) {
+                this.selectedIndex = index
+            }
         }
 
     }
