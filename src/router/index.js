@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Navigation from "../components/Navigation"
-import FirstCourse from '../components/FirstCourse'
-import SecondCourse from "../components/SecondCourse";
+import Navigation from "../homework/components/Navigation"
+import FirstCourse from '../homework/components/FirstCourse'
+import SecondCourse from "../homework/components/SecondCourse";
 
 Vue.use(Router);
 
