@@ -2,7 +2,11 @@
     <div class="navigation">
         <img src="../assets/logo.png"/>
         <h1>front end training</h1>
+
         <router-link to="/firstCourse">first course</router-link>
+        <router-link to="/secondCourse">second course</router-link>
+
+
     </div>
 </template>
 
@@ -18,6 +22,12 @@
         text-align: center;
         color: #2c3e50;
         margin-top: 60px;
+        display: flex;
+        flex-direction: column;
+
+        img {
+            align-self: center;
+        }
     }
 
     h1, h2 {
